@@ -98,6 +98,15 @@
               </p>
             </router-link>
           </li>
+          <li class="nav-item menu-open">
+            <button @click="ConfirmLogout" class="nav-link" style="text-align: start;">
+              <i class="nav-icon fas fa-power-off"></i>
+              <p class="text-bold">
+                ອອກຈາກລະບົບ
+                
+              </p>
+            </button>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -107,8 +116,47 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
-  name: 'SidebarComponent'
+  name: 'SidebarComponent',
+
+  methods:{
+    async ConfirmLogout(){
+        Swal.fire({
+          title: 'ອອກຈາກລະບົບແທ້ ຫຼື ບໍ່?',
+          text: 'ທ່ານ ແນ່ໃຈບໍ່ ທີ່ຈະອອກຈະລະບົບ: ',
+          icon: 'warning',
+          showCancelButton: true,
+          cancelButtonText: 'ຍົກເລີກ',
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'ຍືນຍັນ!'
+        }).then((result => {
+          if(result.isConfirmed){
+            this.HandleLogout();
+          }
+        }))
+    },
+
+    async HandleLogout(){
+      localStorage.removeItem('token');
+      this.ShowLogoutMessage();
+      this.$router.push('/login');
+
+    },
+    async ShowLogoutMessage(){
+      Swal.fire({
+        title: "ສຳເລັດ",
+        text: "ອອກຈາກລະບົບສໍາເລັດ",
+        icon: "success",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      })
+    },
+  }
   
 }
 </script>
