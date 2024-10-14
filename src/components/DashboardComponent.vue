@@ -145,8 +145,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">ແຜນການທັງໝົດ</span>
                 <span class="info-box-number">
-                  
-                  
+                  {{ count_all_plans }}
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -160,7 +159,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">ແຜນການທີ່ສຳເລັດແລ້ວ</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-number">{{ count_success_plans }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -177,7 +176,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">ແຜນການທີ່ບໍ່ທັນສຳເລັດ</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-number">{{ count_plans_not_success }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -190,7 +189,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">ຈຳນວນມື້</span>
-                <span class="info-box-number">2000</span>
+                <span class="info-box-number">{{ count_days }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -227,7 +226,11 @@ export default {
       sum_income_today: 0,
       sum_expense_today: 0,
       sum_expense_month: 0,
-      sum_income_month: 0
+      sum_income_month: 0,
+      count_all_plans: 0,
+      count_success_plans: 0,
+      count_plans_not_success: 0,
+      count_days: 0
     }
   },
   mounted(){
@@ -238,10 +241,14 @@ export default {
     this.SumALLExpenseToDay();
     this.SumALLExpenseMonth();
     this.SumALLIncomeMonth();
+    this.CountAllPlan();
+    this.CountSuccessPlan();
+    this.CountNotSuccessPlan();
+    this.CountDaysPlan();
   },
   methods:{
     async SumALLIncome(){
-      axios.get('http://localhost:3000/api/sum-all-income')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-all-income')
       .then(response => {
         this.sum_income = response.data.sum_income;
       })
@@ -250,7 +257,7 @@ export default {
       })
     },
     async SumALLExpense(){
-      axios.get('http://localhost:3000/api/sum-all-expense')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-all-expense')
       .then(response => {
         this.sum_expense = response.data.sum_expense;
       })
@@ -259,7 +266,7 @@ export default {
       })
     },
     async SumALLRemaining(){
-      axios.get('http://localhost:3000/api/sum-all-remainings')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-all-remainings')
       .then(response => {
         this.sum_remainings = response.data.sum_remainings;
       })
@@ -269,7 +276,7 @@ export default {
     }
     ,
     async SumALLIncomeToDay(){
-      axios.get('http://localhost:3000/api/sum-income-today')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-income-today')
       .then(response => {
         this.sum_income_today = response.data.sum_income_today;
       })
@@ -278,7 +285,7 @@ export default {
       })
     },
     async SumALLExpenseToDay(){
-      axios.get('http://localhost:3000/api/sum-expense-today')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-expense-today')
       .then(response => {
         this.sum_expense_today = response.data.sum_expense_today;
       })
@@ -287,7 +294,7 @@ export default {
       })
     },
     async SumALLExpenseMonth(){
-      axios.get('http://localhost:3000/api/sum-expense-month')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-expense-month')
       .then(response => {
         this.sum_expense_month = response.data.sum_expense_month;
       })
@@ -296,9 +303,45 @@ export default {
       })
     },
     async SumALLIncomeMonth(){
-      axios.get('http://localhost:3000/api/sum-income-month')
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/sum-income-month')
       .then(response => {
         this.sum_income_month = response.data.sum_income_month;
+      })
+      .catch(error => {
+        console.log("Error", error);
+      })
+    },
+    async CountAllPlan(){
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/count-all-plan')
+      .then(response => {
+        this.count_all_plans = response.data.count_all_plans;
+      })
+      .catch(error => {
+        console.log("Error", error);
+      })
+    },
+    async CountSuccessPlan(){
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/count-plan-success')
+      .then(response => {
+        this.count_success_plans = response.data.count_success_plans;
+      })
+      .catch(error => {
+        console.log("Error", error);
+      })
+    },
+    async CountNotSuccessPlan(){
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/count-plan-not-success')
+      .then(response => {
+        this.count_plans_not_success = response.data.count_plans_not_success;
+      })
+      .catch(error => {
+        console.log("Error", error);
+      })
+    },
+    async CountDaysPlan(){
+      axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/count-days')
+      .then(response => {
+        this.count_days = response.data.count_days;
       })
       .catch(error => {
         console.log("Error", error);

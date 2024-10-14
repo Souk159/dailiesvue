@@ -238,7 +238,7 @@ export default {
     // function show admin
     async ShowPlans() {
       try {
-        const response = await axios.get('http://localhost:3000/api/select-plan');
+        const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-plan');
         if (Array.isArray(response.data)) {
           this.plans = response.data;
         } else {
@@ -252,7 +252,7 @@ export default {
     // function create admin
     async CreatePlans() {
       try {
-        const response = await axios.post('http://localhost:3000/api/create-plan', {
+        const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-plan', {
           name: this.name,
           percent: this.percent,
 
@@ -286,7 +286,7 @@ export default {
         params.append('percent', this.searchQuerypercent)
       }
 
-      fetch(`http://localhost:3000/api/search-plan?${params.toString()}`)
+      fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-plan?${params.toString()}`)
         .then((response) => response.json())
         .then((data) => {
           this.plans = data;
@@ -315,7 +315,7 @@ export default {
 
     async DeletePlans(Plan_ID) {
       try {
-        const response = await axios.delete(`http://localhost:3000/api/delete-plan/${Plan_ID}`);
+        const response = await axios.delete(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-plan/${Plan_ID}`);
         console.log(response.data);
         Swal.fire({
           title: 'ລົບລ້າງ',
@@ -351,7 +351,7 @@ export default {
     async ShowPlanItem(Plan_ID) {
       this.Plan_ID = Plan_ID;
       try {
-        const response = await axios.get(`http://localhost:3000/api/plan/${Plan_ID}`);
+        const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/plan/${Plan_ID}`);
         this.updatename = response.data.name,
           this.updatepercent = response.data.percent,
           this.updateactive = response.data.active
@@ -365,7 +365,7 @@ export default {
 
     async UpdatePlans() {
       try {
-        const response = await axios.put(`http://localhost:3000/api/update-plan/${this.Plan_ID}`, {
+        const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-plan/${this.Plan_ID}`, {
           name: this.updatename,
           percent: this.updatepercent,
           active: this.updateactive,

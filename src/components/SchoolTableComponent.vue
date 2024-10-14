@@ -291,7 +291,7 @@ export default {
 
         async ShowSchoolTable() {
             try {
-                const response = await axios.get('http://localhost:3000/api/select-school-table');
+                const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-school-table');
                 if (Array.isArray(response.data)) {
                     this.school_tables = response.data;
                 } else {
@@ -304,7 +304,7 @@ export default {
         
         async CreateSchoolTable() {
             try {
-                const response = await axios.post('http://localhost:3000/api/create-school-table', {
+                const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-school-table', {
                     first_time: this.first_time,
                     second_time: this.second_time,
                     third_time: this.third_time,
@@ -377,7 +377,7 @@ export default {
 
     async DeleteSchoolTable(Table_ID) {
       try {
-        const response = await axios.delete(`http://localhost:3000/api/delete-school-table/${Table_ID}`);
+        const response = await axios.delete(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-school-table/${Table_ID}`);
         console.log(response.data);
         Swal.fire({
           title: 'ລົບລ້າງ!',
@@ -416,7 +416,7 @@ export default {
             params.append('first_time', this.searchQueryfirst_time)
         }
 
-        fetch(`http://localhost:3000/api/search-school-table?${params.toString()}`)
+        fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-school-table?${params.toString()}`)
             .then((response) => response.json())
             .then((data) => {
             this.school_tables = data;
@@ -430,7 +430,7 @@ export default {
     async ShowSchoolTableItem(Table_ID){
       this.Table_ID = Table_ID;
       try {
-        const response = await axios.get(`http://localhost:3000/api/school-table/${Table_ID}`);
+        const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/school-table/${Table_ID}`);
 
             this.update_first_time = response.data.first_time,
             this.update_second_time = response.data.second_time,
@@ -446,7 +446,7 @@ export default {
 
     async UpdateSchoolTable() {
       try {
-        const response = await axios.put(`http://localhost:3000/api/update-school-table/${this.Table_ID}`, {
+        const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-school-table/${this.Table_ID}`, {
             first_time: this.update_first_time,
             second_time: this.update_second_time,
             third_time: this.update_third_time,

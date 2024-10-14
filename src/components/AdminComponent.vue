@@ -211,7 +211,7 @@
       // function show admin
       async ShowAdmins(){
         try {
-          const response = await axios.get('http://localhost:3000/api/select-admin');
+          const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-admin');
           if (Array.isArray(response.data)){
             this.admins = response.data;
           }else{
@@ -225,7 +225,7 @@
       // function create admin
       async CreateAdmin(){
         try{
-          const response = await axios.post('http://localhost:3000/api/create-admin',{
+          const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-admin',{
           username: this.username,
           email: this.email,
           password: this.password,
@@ -257,7 +257,7 @@
                       'phone', this.searchQuery
         );
 
-        fetch(`http://localhost:3000/api/search-admin?${params.toString()}`)
+        fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-admin?${params.toString()}`)
         .then((response) => response.json())
         .then((data) => {
           this.admins = data;
@@ -286,7 +286,7 @@
 
       async DeleteAdmin(Admin_ID){
         try{
-          const response = await axios.delete(`http://localhost:3000/api/delete-admin/${Admin_ID}`);
+          const response = await axios.delete(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-admin/${Admin_ID}`);
           console.log(response.data);
           Swal.fire({
             title: 'ລົບລ້າງ',
@@ -322,7 +322,7 @@
       async ShowAdminItem(Admin_ID) {
         this.Admin_ID = Admin_ID;
         try{
-          const response = await axios.get(`http://localhost:3000/api/admin/${Admin_ID}`);
+          const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/admin/${Admin_ID}`);
           this.updateusername = response.data.username,
           this.updateemail = response.data.email,
           this.updatepassword = "",
@@ -337,7 +337,7 @@
 
       async UpdateAdmin(){
         try{
-          const response = await axios.put(`http://localhost:3000/api/update-admin/${this.Admin_ID}`, {
+          const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-admin/${this.Admin_ID}`, {
             username: this.updateusername,
             email: this.updateemail,
             password: this.updatepassword,

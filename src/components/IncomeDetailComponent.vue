@@ -234,7 +234,7 @@ export default {
         // Function Show Module
         async ShowIncome() {
             try {
-                const response = await axios.get('http://localhost:3000/api/select-all-income');
+                const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-all-income');
                 if (Array.isArray(response.data)) {
                     this.incomes_s = response.data;
                 } else {
@@ -248,7 +248,7 @@ export default {
         // Function Create Admin
         async CreateIncome() {
             try {
-                const response = await axios.post('http://localhost:3000/api/create-income', {
+                const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-income', {
                     income: this.income,
                     income_reason: this.income_reason,
                     status: this.status
@@ -301,7 +301,7 @@ export default {
         
         async DeleteIncome(Income_ID) {
             try {
-                const response = await axios.delete(`http://localhost:3000/api/delete-income/${Income_ID}`);
+                const response = await axios.delete(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-income/${Income_ID}`);
                 console.log(response.data);
                 Swal.fire({
                     title: 'ລົບລ້າງ!',
@@ -339,7 +339,7 @@ export default {
                 params.append('income_reason',this.searchQueryIncomeReason)
             }
             
-            fetch(`http://localhost:3000/api/search-income?${params.toString()}`)
+            fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-income?${params.toString()}`)
                 .then((response) => response.json())
                 .then((data) => {
                     this.incomes_s = data;
@@ -356,7 +356,7 @@ export default {
         async ShowIncomeItem(Income_ID) {
             this.Income_ID = Income_ID;
             try {
-                const response = await axios.get(`http://localhost:3000/api/income/${Income_ID}`);
+                const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/income/${Income_ID}`);
                 this.updateincome = response.data.income,
                     this.updateincome_reason = response.data.income_reason,
                     this.updatestatus = response.data.status
@@ -368,7 +368,7 @@ export default {
         // Function Update Module
         async UpdateIncome() {
             try {
-                const response = await axios.put(`http://localhost:3000/api/update-income/${this.Income_ID}`, {
+                const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-income/${this.Income_ID}`, {
                     income: this.updateincome,
                     income_reason: this.updateincome_reason,
                     status: this.updatestatus

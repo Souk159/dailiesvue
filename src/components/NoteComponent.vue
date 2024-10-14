@@ -221,7 +221,7 @@ export default {
 
       async ShowNotes() {
           try {
-              const response = await axios.get('http://localhost:3000/api/select-notes');
+              const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-notes');
               if (Array.isArray(response.data)) {
                   this.note_s = response.data;
               } else {
@@ -233,7 +233,7 @@ export default {
       },
       async ShowModules() {
           try {
-              const response = await axios.get('http://localhost:3000/api/select-module');
+              const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-module');
               if (Array.isArray(response.data)) {
                   this.modules_s = response.data;
               } else {
@@ -245,7 +245,7 @@ export default {
       },
       async CreateNote() {
           try {
-              const response = await axios.post('http://localhost:3000/api/create-notes', {
+              const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-notes', {
                   content: this.content,
                   module_id: this.Module_Name,
               });
@@ -308,7 +308,7 @@ export default {
 
       async DeleteNote(Note_ID) {
             try {
-              const response = await axios.delete(`http://localhost:3000/api/delete-notes/${Note_ID}`);
+              const response = await axios.delete(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-notes/${Note_ID}`);
               console.log(response.data);
               Swal.fire({
                 title: 'ລົບລ້າງ!',
@@ -341,7 +341,7 @@ export default {
         const params = new URLSearchParams();
         params.append('content', this.searchQuery);
 
-        fetch(`http://localhost:3000/api/search-note?${params.toString()}`)
+        fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-note?${params.toString()}`)
           .then((response) => response.json())
           .then((data) => {
             this.note_s = data;
@@ -357,7 +357,7 @@ export default {
         const params = new URLSearchParams();
         params.append('module_id', this.searchQueryByModule);
 
-        fetch(`http://localhost:3000/api/search-note-by-module?${params.toString()}`)
+        fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-note-by-module?${params.toString()}`)
           .then((response) => response.json())
           .then((data) => {
             this.note_s = data;
@@ -372,7 +372,7 @@ export default {
       async ShowNoteItem(Note_ID){
         this.Note_ID = Note_ID;
         try {
-          const response = await axios.get(`http://localhost:3000/api/notes/${Note_ID}`);
+          const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/notes/${Note_ID}`);
           this.updatecontent = response.data.content
         } catch (error){
           console.error(error.response.data);
@@ -381,7 +381,7 @@ export default {
 
       async UpdateNote() {
           try {
-            const response = await axios.put(`http://localhost:3000/api/update-notes/${this.Note_ID}`, {
+            const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-notes/${this.Note_ID}`, {
                 content: this.updatecontent,
                 module_id: this.updatemodulename
             });

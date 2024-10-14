@@ -54,7 +54,7 @@ export default {
   methods: {
     async HandleLogin(){
       try{
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/login', {
           phone: this.phone,
           password: this.password
         });

@@ -234,7 +234,7 @@ export default {
         // Function Show Module
         async ShowExpense() {
             try {
-                const response = await axios.get('http://localhost:3000/api/select-all-expense');
+                const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-all-expense');
                 if (Array.isArray(response.data)) {
                     this.expenses_s = response.data;
                 } else {
@@ -248,7 +248,7 @@ export default {
         // Function Create Admin
         async CreateExpense() {
             try {
-                const response = await axios.post('http://localhost:3000/api/create-expense', {
+                const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-expense', {
                     expense: this.expense,
                     expense_reason: this.expense_reason,
                     status: this.status
@@ -301,7 +301,7 @@ export default {
         
         async DeleteExpense(Expense_ID) {
             try {
-                const response = await axios.delete(`http://localhost:3000/api/delete-expense/${Expense_ID}`);
+                const response = await axios.delete(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-expense/${Expense_ID}`);
                 console.log(response.data);
                 Swal.fire({
                     title: 'ລົບລ້າງ!',
@@ -339,7 +339,7 @@ export default {
                 params.append('expense_reason',this.searchQueryExpenseReason)
             }
             
-            fetch(`http://localhost:3000/api/search-expense?${params.toString()}`)
+            fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-expense?${params.toString()}`)
                 .then((response) => response.json())
                 .then((data) => {
                     this.expenses_s = data;
@@ -356,7 +356,7 @@ export default {
         async ShowExpenseItem(Expense_ID) {
             this.Expense_ID = Expense_ID;
             try {
-                const response = await axios.get(`http://localhost:3000/api/expense/${Expense_ID}`);
+                const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/expense/${Expense_ID}`);
                 this.updateexpense = response.data.expense,
                     this.updateexpense_reason = response.data.expense_reason,
                     this.updatestatus = response.data.status
@@ -368,7 +368,7 @@ export default {
         // Function Update Module
         async UpdateExpense() {
             try {
-                const response = await axios.put(`http://localhost:3000/api/update-expense/${this.Expense_ID}`, {
+                const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-expense/${this.Expense_ID}`, {
                     expense: this.updateexpense,
                     expense_reason: this.updateexpense_reason,
                     status: this.updatestatus

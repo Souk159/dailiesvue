@@ -545,7 +545,7 @@ export default {
         // Function Show Admin
         async ShowDailies() {
             try {
-                const response = await axios.get('http://localhost:3000/api/select-daily');
+                const response = await axios.get('https://nodejsbackenddailies-m7t9.onrender.com/api/select-daily');
                 if (Array.isArray(response.data)) {
                     this.dailies = response.data;
 
@@ -560,7 +560,7 @@ export default {
         // Function Create Admin
         async CreateDaily() {
             try {
-                const response = await axios.post('http://localhost:3000/api/create-daily', {
+                const response = await axios.post('https://nodejsbackenddailies-m7t9.onrender.com/api/create-daily', {
                     five_six: this.five_six,
                     six_seven: this.six_seven,
                     seven_eight: this.seven_eight,
@@ -637,7 +637,7 @@ export default {
 
         async DeleteDaily(Daily_ID) {
             try {
-                const response = await axios.put(`http://localhost:3000/api/delete-daily/${Daily_ID}`);
+                const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/delete-daily/${Daily_ID}`);
                 console.log(response.data);
                 Swal.fire({
                     title: 'ລົບລ້າງ!',
@@ -682,7 +682,7 @@ export default {
                 params.append('thirteen_fourteen', this.searchQueryThirteen_Fourteen)
             }
 
-            fetch(`http://localhost:3000/api/search-daily?${params.toString()}`)
+            fetch(`https://nodejsbackenddailies-m7t9.onrender.com/api/search-daily?${params.toString()}`)
                 .then((response) => response.json())
                 .then((data) => {
                     this.dailies = data;
@@ -698,7 +698,7 @@ export default {
         async ShowDailyItem(Daily_ID) {
             this.Daily_ID = Daily_ID;
             try {
-                const response = await axios.get(`http://localhost:3000/api/daily/${Daily_ID}`);
+                const response = await axios.get(`https://nodejsbackenddailies-m7t9.onrender.com/api/daily/${Daily_ID}`);
                 this.update_five_six = response.data.five_six,
                 this.update_six_seven= response.data.six_seven,
                 this.update_seven_eight= response.data.seven_eight,
@@ -727,7 +727,7 @@ export default {
         // Function Update Admin
         async UpdateDaily() {
             try {
-                const response = await axios.put(`http://localhost:3000/api/update-daily/${this.Daily_ID}`, {
+                const response = await axios.put(`https://nodejsbackenddailies-m7t9.onrender.com/api/update-daily/${this.Daily_ID}`, {
                     five_six: this.update_five_six,
                     six_seven: this.update_six_seven,
                     seven_eight: this.update_seven_eight,
